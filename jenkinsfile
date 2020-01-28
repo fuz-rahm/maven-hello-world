@@ -19,9 +19,7 @@ pipeline {
 
 
 
-        stage('SCM') {
-            git 'https://github.com/fuz-rahm/maven-hello-world.git'
-        }
+        
   
   
         stage('SonarQube analysis') {
