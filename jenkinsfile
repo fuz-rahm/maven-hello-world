@@ -16,26 +16,26 @@ pipeline {
             }
         }
 
-        stage('Checkout from Github') {
+        // stage('Checkout from Github') {
         
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/mr/addpa11y-ci']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/fuz-rahm/maven-samples.git']]])
-            }
-        }
+        //     steps{
+        //         checkout([$class: 'GitSCM', branches: [[name: '*/mr/addpa11y-ci']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/fuz-rahm/maven-samples.git']]])
+        //     }
+        // }
 
 
        
-        stage('508 Testing'){
-            steps {
-                script {
-                    sh 'rm -rf pa11y'
+        // stage('508 Testing'){
+        //     steps {
+        //         script {
+        //             sh 'rm -rf pa11y'
 
-                    sh 'mkdir pa11y'
-                    sh label: '', returnStdout: true, script: 'sh runpa11y.sh'
-                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'pa11y/index.html', reportName: '508 Testing Report', reportTitles: '508 Accessibility Report'])
-                }
-            }
-         }
+        //             sh 'mkdir pa11y'
+        //             sh label: '', returnStdout: true, script: 'sh runpa11y.sh'
+        //              publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'pa11y/index.html', reportName: '508 Testing Report', reportTitles: '508 Accessibility Report'])
+        //         }
+        //     }
+        //  }
 
           stage('Performance Tests') {
             agent {
