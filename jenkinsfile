@@ -11,7 +11,7 @@ pipeline {
 
     stages {
         stage('clean workspace') {
-            
+
             steps{
                 cleanWs()
             }
@@ -33,16 +33,10 @@ pipeline {
         //     }
         //  }
 
-          stage('Performance Tests') {
-            agent {
-            label 'master'
-            }
-            when {
-              branch 'master'
-            }
+          stage('Lighthouse') {
+           
              steps {
-                  deleteDir()
-                  checkout scm
+                 
                   sh 'npm install'
                     sh 'npm run lighthouse'
                 }
